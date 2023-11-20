@@ -10,7 +10,7 @@ using apiUniversidade.Context;
 
 namespace apiUniversidade.Migrations
 {
-    [DbContext(typeof(apiUniversidadeContext))]
+    [DbContext(typeof(ApiUniversidadeContext))]
     partial class apiUniversidadeContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

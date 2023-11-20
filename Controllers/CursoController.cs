@@ -15,9 +15,9 @@ namespace apiUniversidade.Controllers
     public class CursoController : ControllerBase
     {
         private readonly ILogger<CursoController> _logger;
-        private readonly apiUniversidadeContext _context;
+        private readonly ApiUniversidadeContext _context;
 
-         public CursoController(ILogger<CursoController> logger, apiUniversidadeContext context)
+         public CursoController(ILogger<CursoController> logger, ApiUniversidadeContext context)
         {
             _logger = logger;
             _context = context;
