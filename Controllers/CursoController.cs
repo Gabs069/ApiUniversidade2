@@ -4,78 +4,77 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using apiUniversidade.Model;
+using apiUniversidade.Context;
 
 namespace apiUniversidade.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
+    
     public class CursoController : ControllerBase
     {
+        private readonly ILogger<CursoController> _logger;
+        private readonly apiUniversidadeContext _context;
 
-        [HttpGet(Name = "cursos")]
-
-        public List<Curso> GetCursos()
+         public CursoController(ILogger<CursoController> logger, apiUniversidadeContext context)
         {
+            _logger = logger;
+            _context = context;
+        }
 
-            List<Aluno> alunos = new List<Aluno>();
-            List<Disciplina> disciplinas = new List<Disciplina>();
-            List<Curso> cursos = new List<Curso>();
-
-            disciplinas.Add(new Disciplina{
-                Nome = "Português",
-                CargaHoraria = 80,
-                Semestre = 4
-            });
-
-            disciplinas.Add(new Disciplina{
-                Nome = "Matemática",
-                CargaHoraria = 80,
-                Semestre = 4
-            });
-
-            disciplinas.Add(new Disciplina{
-                Nome = "História",
-                CargaHoraria = 80,
-                Semestre = 4
-            });
-
-            cursos.Add(new Curso{
-                Nome = "Linguagem",
-                Area = "Letras",
-                Duracao = 4,
-                Disciplinas = disciplinas,
-                Alunos = alunos
-            });
-
-            cursos.Add(new Curso{
-                Nome = "Calcúlos",
-                Area = "Matemática",
-                Duracao = 4,
-                Disciplinas = disciplinas,
-                Alunos = alunos
-            });
-
-            cursos.Add(new Curso{
-                Nome = "História",
-                Area = "História",
-                Duracao = 4,
-                Disciplinas = disciplinas,
-                Alunos = alunos
-            });
-
-            alunos.Add(new Aluno {
-                Nome = "Jardson",
-                dataNascimento = DateTime.Now,
-                CPF = "444-444"
-            });
-
-            alunos.Add(new Aluno {
-                Nome = "Maria",
-                dataNascimento = DateTime.Now,
-                CPF = "444-455"
-            });
+        [HttpGet]
+        public ActionResult<IEnumerable<Curso>> Get()
+        {
+            var cursos = _context.Cursos.ToList();
+            if(cursos is null)
+                return NotFound();  
 
             return cursos;
         }
+
+        [HttpPost]
+        public ActionResult Post(Curso curso){
+            _context.Cursos.Add(curso);
+            _context.SaveChanges();
+
+            return new CreatedAtRouteResult ("GetCurso", new{ id = curso.ID}, curso);
+        }
+
+        [HttpGet ("{id:int}", Name ="GetCurso")]
+        public ActionResult<Curso> Get(int id)
+        {
+            var curso = _context.Cursos.FirstOrDefault(p => p.ID == id);
+            if(curso is null)
+                return NotFound("Curso não encontado.");
+
+                return curso;
+        }
+        [HttpPut("{id:int}")]
+        public ActionResult Put(int id, Curso curso){
+            if(id != curso.ID)
+                return BadRequest();
+
+            _context.Entry(curso).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok(curso);
+        }
+
+        [HttpDelete("{id:int}")]
+        public ActionResult Delete (int id){
+            var curso = _context.Cursos.FirstOrDefault(p => p.ID == id);
+
+            if(curso is null)
+            return NotFound();
+
+            _context.Cursos.Remove(curso);
+            _context.SaveChanges();
+
+            return Ok(curso);
+        }
+
+
+
     }
 }
