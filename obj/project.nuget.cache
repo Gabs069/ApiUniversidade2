@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c6bPBH//iJgcTVBE0Wmo93x0Z98f47plmW0U93aO6KCUXjs1BqQUF6Q3nlY0mUz8Gp1/3T12r0I2SClCrixd4g==",
+  "dgSpecHash": "rbMViruTIULYmFxOcFA5h12KjLhNQw8SWf6YXr2bdW0LAGhp9Db2kZfZUc9UYqCppSdxnTXsTy0tClOpq8bPoA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade\\apiUniversidade.csproj",
+  "projectFilePath": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\20201034010022\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\20201034010022\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade\\apiUniversidade.csproj": {}
+    "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade.csproj": {}
   },
   "projects": {
-    "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade\\apiUniversidade.csproj": {
+    "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade\\apiUniversidade.csproj",
+        "projectUniqueName": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade.csproj",
         "projectName": "apiUniversidade",
-        "projectPath": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade\\apiUniversidade.csproj",
+        "projectPath": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade.csproj",
         "packagesPath": "C:\\Users\\20201034010022\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20201034010022\\ApiUniversidade2\\apiUniversidade\\obj\\",
+        "outputPath": "C:\\Users\\20201034010022\\ApiUniversidade2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\20201034010022\\AppData\\Roaming\\NuGet\\NuGet.Config"
