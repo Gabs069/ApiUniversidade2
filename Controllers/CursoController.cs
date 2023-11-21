@@ -5,23 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using apiUniversidade.Model;
 using apiUniversidade.Context;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace apiUniversidade.Controllers
 {
     [ApiController]
     [Route("[controller]")]
 
-    
+
+   
     public class CursoController : ControllerBase
     {
         private readonly ILogger<CursoController> _logger;
-        private readonly ApiUniversidadeContext _context;
+        private readonly apiUniversidadeContext _context;
 
-         public CursoController(ILogger<CursoController> logger, ApiUniversidadeContext context)
+
+         public CursoController(ILogger<CursoController> logger, apiUniversidadeContext context)
         {
             _logger = logger;
             _context = context;
         }
+
 
         [HttpGet]
         public ActionResult<IEnumerable<Curso>> Get()
@@ -30,51 +35,53 @@ namespace apiUniversidade.Controllers
             if(cursos is null)
                 return NotFound();  
 
+
             return cursos;
         }
+
 
         [HttpPost]
         public ActionResult Post(Curso curso){
             _context.Cursos.Add(curso);
             _context.SaveChanges();
 
+
             return new CreatedAtRouteResult ("GetCurso", new{ id = curso.ID}, curso);
         }
-
-        [HttpGet ("{id:int}", Name ="GetCurso")]
-        public ActionResult<Curso> Get(int id)
-        {
+        
+        [HttpGet ("(id:int)", Name ="GetCurso")]
+        
+        public ActionResult<Curso> Get(int id){
             var curso = _context.Cursos.FirstOrDefault(p => p.ID == id);
-            if(curso is null)
-                return NotFound("Curso não encontado.");
+            if(curso == null)
+            return NotFound("Curso Não Encontrado. ");
 
-                return curso;
+            return curso;
         }
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Curso curso){
             if(id != curso.ID)
                 return BadRequest();
 
-            _context.Entry(curso).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            _context.SaveChanges();
+                _context.Entry(curso).State = EntityState.Modified;
+                _context.SaveChanges();
 
-            return Ok(curso);
+                return Ok(curso);
         }
 
-        [HttpDelete("{id:int}")]
-        public ActionResult Delete (int id){
+        [HttpDelete("id: int")]
+        public ActionResult Delete(int id){
+
             var curso = _context.Cursos.FirstOrDefault(p => p.ID == id);
 
             if(curso is null)
-            return NotFound();
+                return NotFound();
 
-            _context.Cursos.Remove(curso);
-            _context.SaveChanges();
+                _context.Cursos.Remove(curso);
+                _context.SaveChanges();
 
-            return Ok(curso);
+                return Ok(curso);
+
         }
-
-
-
-    }
-}
+        }}
+    

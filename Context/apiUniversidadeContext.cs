@@ -7,9 +7,9 @@ using apiUniversidade.Model;
 
 namespace apiUniversidade.Context
 {
-    public class ApiUniversidadeContext : DbContext
+    public class apiUniversidadeContext : DbContext
     {
-        public ApiUniversidadeContext(DbContextOptions options) : base(options) { }
+        public apiUniversidadeContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Aluno>? Alunos { get; set; }
 

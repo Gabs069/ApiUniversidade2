@@ -11,7 +11,7 @@ using apiUniversidade.Context;
 
 namespace apiUniversidade.Migrations
 {
-    [DbContext(typeof(ApiUniversidadeContext))]
+    [DbContext(typeof(apiUniversidadeContext))]
     [Migration("20231017143044_MigracaoInicial")]
     partial class MigracaoInicial
     {
