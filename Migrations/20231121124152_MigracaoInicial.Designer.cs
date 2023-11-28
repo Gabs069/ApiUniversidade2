@@ -12,7 +12,7 @@ using apiUniversidade.Context;
 namespace apiUniversidade.Migrations
 {
     [DbContext(typeof(apiUniversidadeContext))]
-    [Migration("20231017143044_MigracaoInicial")]
+    [Migration("20231121124152_MigracaoInicial")]
     partial class MigracaoInicial
     {
         /// <inheritdoc />
