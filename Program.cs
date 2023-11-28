@@ -1,14 +1,18 @@
 using apiUniversidade.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
-builder.Services.AddDbContext<ApiUniversidadeContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<apiUniversidadeContext>(options => options.UseNpgsql(connectionString));
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+builder.Services.AddIdentity<IdentityUser,IdentityRole>()
+    .AddEntityFrameworkStores<apiUniversidadeContext>()
+    .AddDefaultTokenProviders();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,6 +27,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
