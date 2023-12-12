@@ -2,12 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using apiUniversidade.Context;
+using apiUniversidade.Model;
 using ApiUniversidade2.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ApiUniversidade2.Controllers
@@ -45,7 +51,7 @@ namespace ApiUniversidade2.Controllers
 
             await _signInManager.SignInAsync(user, false);
             //return OK(GerarToken(model));
-            return Ok();
+            return Ok(GerarToken(model));
             }
         [HttpPost("login")]
             public async Task<ActionResult> Login([FromBody] UsuarioDTO userInfo){
