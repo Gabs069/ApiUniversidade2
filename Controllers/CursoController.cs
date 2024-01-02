@@ -11,8 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace apiUniversidade.Controllers
 {
     [Authorize(AuthenticationSchemes = "Bearer")]
+    [ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{version:apiVersion}/curso")]
 
     
     public class CursoController : ControllerBase
