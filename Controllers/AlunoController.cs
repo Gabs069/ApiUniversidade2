@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using apiUniversidade.Model;
 using apiUniversidade.Context;
+using Microsoft.AspNetCore.Authorization;
 
 namespace apiUniversidade.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("[controller]")]
     
@@ -15,7 +17,7 @@ namespace apiUniversidade.Controllers
     {
          private readonly ILogger<AlunoController> _logger;
         private readonly apiUniversidadeContext _context;
-
+        
         public AlunoController(ILogger<AlunoController> logger, apiUniversidadeContext context)
         {
             _logger = logger;
